@@ -5,61 +5,47 @@
 
 #include "elements.h" 
 
+
 struct Element_D {
-  char type ;
+  int type ;
   int posX ;
   int posY ;
 } ;
 
+//----------------------------------------------------------------- CREATION 
+
 Element creerTigre(int posX, int posY) {
   Element e = (Element) malloc (sizeof(struct Element_D));
-  e->type = 't';
+  e->type = TIGRE;
   e->posX = posX ;
   e->posY = posY ;
   return e;
 }
-
 
 Element creerChevre(int posX, int posY) {
   Element e = (Element) malloc (sizeof(struct Element_D));
-  e->type = 'c' ;
+  e->type = CHEVRE ;
   e->posX = posX ;
   e->posY = posY ;
   return e;
 }
 
-int plusGrand_E(Element e1, Element e2) {
-  if (e1->posX > e2->posX) {
-    return 1 ;
-  } else {
-    if (e1->posX < e2->posX) {
-      return 0 ;
-    } else {
-      return (e1->posY > e2->posY) ;
-    }
-  }
-}
+//----------------------------------------------------------------- GETTEUR
 
 int estChevre(Element e) {
-  return (e->type == 'c' );
+  return (e->type == CHEVRE);
 }
-      
-int plusGrand_P(Element e1, int posX, int posY) {
-  if (e1->posX > posX) {
-    return 1 ;
-  } else {
-    if (e1->posX < posX) {
-      return 0 ;
-    } else {
-      return (e1->posY > posY) ;
-    }
-  }
+
+int getPosX(Element e) {
+  return e->posX;
 }
-      
-int positionEgale(Element e, int posX, int posY) {
-  return (e->posX == posX && e->posY == posY) ;
+
+int getPosY(Element e) {
+  return e->posY;
 }
-      
+           
+//----------------------------------------------------------------- AFFICHAGE 
+
 void afficherElementTest(Element e) {
-  printf("%c (%d,%d) \n", e->type, e->posX, e->posY);
+  printf("%d (%d,%d) \n", e->type, e->posX, e->posY);
 }
